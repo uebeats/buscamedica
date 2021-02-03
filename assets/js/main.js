@@ -2,13 +2,13 @@
  * Template Name: Buscamedica V1
  * Author: madein.codes
  */
-!(function($) {
+!(function ($) {
     "use strict";
 
     // Preloader
-    $(window).on('load', function() {
+    $(window).on('load', function () {
         if ($('#preloader').length) {
-            $('#preloader').delay(100).fadeOut('slow', function() {
+            $('#preloader').delay(100).fadeOut('slow', function () {
                 $(this).remove();
             });
         }
@@ -16,7 +16,7 @@
 
     // Smooth scroll for the navigation menu and links with .scrollto classes
     var scrolltoOffset = $('#header').outerHeight() - 1;
-    $(document).on('click', '.nav-menu a, .mobile-nav a, .scrollto', function(e) {
+    $(document).on('click', '.nav-menu a, .mobile-nav a, .scrollto', function (e) {
         if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
             var target = $(this.hash);
             if (target.length) {
@@ -48,7 +48,7 @@
     });
 
     // Activate smooth scroll on page load with hash links in the url
-    $(document).ready(function() {
+    $(document).ready(function () {
         if (window.location.hash) {
             var initial_nav = window.location.hash;
             if ($(initial_nav).length) {
@@ -64,10 +64,10 @@
     var nav_sections = $('section');
     var main_nav = $('.nav-menu, .mobile-nav');
 
-    $(window).on('scroll', function() {
+    $(window).on('scroll', function () {
         var cur_pos = $(this).scrollTop() + 200;
 
-        nav_sections.each(function() {
+        nav_sections.each(function () {
             var top = $(this).offset().top,
                 bottom = top + $(this).outerHeight();
 
@@ -92,19 +92,19 @@
         $('body').prepend('<button type="button" class="mobile-nav-toggle d-lg-none"><i class="icofont-navigation-menu"></i></button>');
         $('body').append('<div class="mobile-nav-overly"></div>');
 
-        $(document).on('click', '.mobile-nav-toggle', function(e) {
+        $(document).on('click', '.mobile-nav-toggle', function (e) {
             $('body').toggleClass('mobile-nav-active');
             $('.mobile-nav-toggle i').toggleClass('icofont-navigation-menu icofont-close');
             $('.mobile-nav-overly').toggle();
         });
 
-        $(document).on('click', '.mobile-nav .drop-down > a', function(e) {
+        $(document).on('click', '.mobile-nav .drop-down > a', function (e) {
             e.preventDefault();
             $(this).next().slideToggle(300);
             $(this).parent().toggleClass('active');
         });
 
-        $(document).click(function(e) {
+        $(document).click(function (e) {
             var container = $(".mobile-nav, .mobile-nav-toggle");
             if (!container.is(e.target) && container.has(e.target).length === 0) {
                 if ($('body').hasClass('mobile-nav-active')) {
@@ -118,7 +118,7 @@
         $(".mobile-nav, .mobile-nav-toggle").hide().prop('required', false);
     }
     // Toggle .header-scrolled class to #header when page is scrolled
-    $(window).scroll(function() {
+    $(window).scroll(function () {
         if ($(this).scrollTop() > 100) {
             $('#header').addClass('header-scrolled');
             $('#topbar').addClass('topbar-scrolled');
@@ -133,7 +133,7 @@
         $('#topbar').addClass('topbar-scrolled');
     }
     // Back to top button
-    $(window).scroll(function() {
+    $(window).scroll(function () {
         if ($(this).scrollTop() > 100) {
             $('.back-to-top').fadeIn('slow');
         } else {
@@ -141,7 +141,7 @@
         }
     });
 
-    $('.back-to-top').click(function() {
+    $('.back-to-top').click(function () {
         $('html, body').animate({
             scrollTop: 0
         }, 1500, 'easeInOutExpo');
@@ -167,7 +167,7 @@
     });
 
     // Initiate the datepicker plugin
-    $(document).ready(function() {
+    $(document).ready(function () {
         $('.datepicker').datepicker({
             autoclose: true,
             language: 'es',
@@ -178,7 +178,7 @@
 
 })(jQuery);
 
-(function($) {
+(function ($) {
     $(".slider").owlCarousel({
         loop: true,
         autoplay: true,
@@ -206,128 +206,271 @@
 })(jQuery);
 
 
-$(document).ready(function() {
+$(document).ready(function () {
     /** Init SELECT2 Theme Boostrap 4.5 */
     $('select').select2({
+
         language: {
-            noResults: function() {
+            noResults: function () {
                 return "No hay opciones disponibles";
             },
-            searching: function() {
+            searching: function () {
                 return "Buscando..";
             }
         },
         theme: "bootstrap",
-        placeholder: 'Elige una opción',
+        placeholder: "Elige una opción",
         width: '100%'
     });
 
     /** Formateo a RUT CHILENO */
     $('input#rutUser').rut();
-
-    /** Alerta Formulario */
-    $('#formReserva').submit(function(e) {
-        var sForm = $('#formReserva').serialize();
-        Swal.fire(
-            'Reserva Ingresada',
-            'La búsqueda de su hora médica a comenzado. Estamos trabajando en la asignación del médico especialista para su atención.',
-            'success'
-        )
-        document.getElementById("formReserva").reset();
-        e.preventDefault();
-    })
-
-    /** Multistep Formulario Buscamedica */
-    var navListItems = $('div.setup-panel div a'),
-        allWells = $('.setup-content'),
-        allNextBtn = $('.nextBtn');
-
-    allWells.hide().prop('required', false);
-
-    navListItems.click(function(e) {
-        e.preventDefault();
-        var $target = $($(this).attr('href')),
-            $item = $(this);
-
-        if (!$item.hasClass('disabled')) {
-            navListItems.removeClass('btn-success').addClass('btn-secondary');
-            $item.addClass('btn-success');
-            allWells.hide().prop('required', false);
-            $target.show();
-            $target.find('input:eq(0)').focus();
-        }
-    });
-
-    allNextBtn.click(function() {
-        var curStep = $(this).closest(".setup-content"),
-            curStepBtn = curStep.attr("id"),
-            nextStepWizard = $('div.setup-panel div a[href="#' + curStepBtn + '"]').parent().next().children("a"),
-            curInputs = curStep.find("input[type='text'],input[type='url'],input[type='select']"),
-            isValid = true;
-
-        $(".form-group").removeClass("has-error");
-        for (var i = 0; i < curInputs.length; i++) {
-            if (!curInputs[i].validity.valid) {
-                isValid = false;
-                $(curInputs[i]).closest(".form-group").addClass("has-error");
-            }
-        }
-
-        if (isValid) nextStepWizard.removeAttr('disabled').trigger('click');
-    });
-
-    $('div.setup-panel div a.btn-success').trigger('click');
-    /** Fin Multistep Formulario Buscamedica */
+    $('input#rutUserE').rut();
+    $('input#rutUserV').rut();
+    $('input#rutUserH').rut();
 });
 
 /**
  * Ajax Formulario
  */
 
-$(document).ready(function() {
-
-    $("#prevSaludC").change(function() {
-        $("#prevSaludC option:selected").each(function() {
+$(document).ready(function () {
+    /**
+     * Mostrar registros DB Consulta
+     */
+    $("#prevSaludC").change(function () {
+        $("#prevSaludC option:selected").each(function () {
             idprev = $(this).val();
             idtipos = $('#idTipoC').val();
-            $.post("php/ajax/getEspecialidades.php", { idprev: idprev, idtipos: idtipos }, function(data) {
+            $.post("php/ajax/getEspecialidadesC.php", { idprev: idprev, idtipos: idtipos }, function (data) {
                 $("#espeMedicaC").html(data);
             });
         });
     })
 
-    $("#espeMedicaC").change(function() {
-        $("#espeMedicaC option:selected").each(function() {
+    $("#espeMedicaC").change(function () {
+        $("#espeMedicaC option:selected").each(function () {
             idprev = $('#prevSaludC').val();
             idespe = $(this).val();
 
-            $.post("php/ajax/getComunas.php", { idespe: idespe, idprev: idprev }, function(data) {
+            $.post("php/ajax/getComunasC.php", { idespe: idespe, idprev: idprev }, function (data) {
                 $("#comunasC").html(data);
             });
         });
     })
 
-    $("#comunasC").change(function() {
-        $("#comunasC option:selected").each(function() {
+    $("#comunasC").change(function () {
+        $("#comunasC option:selected").each(function () {
             idprev = $('#prevSaludC').val();
             idespe = $('#espeMedicaC').val();
             idcomuna = $(this).val();
             // console.log(idespe + ' - ' + idprev + ' - ' + idcomuna);
-            $.post("php/ajax/getCentroMedico.php", { idespe: idespe, idprev: idprev, idcomuna: idcomuna }, function(data) {
+            $.post("php/ajax/getCentroMedicoC.php", { idespe: idespe, idprev: idprev, idcomuna: idcomuna }, function (data) {
                 $("#centroMedicoC").html(data);
             });
         });
     })
 
-    $("#centroMedicoC").change(function() {
-        $("#centroMedicoC option:selected").each(function() {
+    $("#centroMedicoC").change(function () {
+        $("#centroMedicoC option:selected").each(function () {
             idprev = $('#prevSaludC').val();
             idespe = $('#espeMedicaC').val();
             idcentro = $(this).val();
-            console.log(idprev + ' - ' + idespe + ' - ' + idcentro);
-            $.post("php/ajax/getMedicos.php", { idespe: idespe, idprev: idprev, idcentro: idcentro }, function(data) {
+            $.post("php/ajax/getMedicosC.php", { idespe: idespe, idprev: idprev, idcentro: idcentro }, function (data) {
                 $("#medicoC").html(data);
             });
+        });
+    })
+
+    /**
+     * Mostrar registros DB Examen
+     */
+    $("#prevSaludE").change(function () {
+        $("#prevSaludE option:selected").each(function () {
+            idprev = $(this).val();
+            idtipos = $('#idTipoE').val();
+            //console.log(idprev + idtipos);
+            $.post("php/ajax/getExamenes.php", { idprev: idprev, idtipos: idtipos }, function (data) {
+                $("#tipoExamenE").html(data);
+            });
+        });
+    })
+
+    $("#tipoExamenE").change(function () {
+        $("#tipoExamenE option:selected").each(function () {
+            idexamen = $(this).val();
+            idprev = $('#prevSaludE').val();
+            $.post("php/ajax/getComunasE.php", { idexamen: idexamen, idprev: idprev }, function (data) {
+                $("#comunasE").html(data);
+            });
+        });
+    })
+
+    $("#comunasE").change(function () {
+        $("#comunasE option:selected").each(function () {
+            idprev = $('#prevSaludE').val();
+            idexamen = $('#tipoExamenE').val();
+            $.post("php/ajax/getCentroMedicoE.php", { idexamen: idexamen, idprev: idprev }, function (data) {
+                $("#centroMedicoE").html(data);
+            });
+        });
+    })
+
+    $("#centroMedicoE").change(function () {
+        $("#centroMedicoE option:selected").each(function () {
+            idprev = $('#prevSaludE').val();
+            idexamen = $('#tipoExamenE').val();
+            idcentro = $(this).val();
+            $.post("php/ajax/getMedicosE.php", { idexamen: idexamen, idprev: idprev, idcentro: idcentro }, function (data) {
+                $("#medicosE").html(data);
+            });
+        });
+    })
+
+    /**
+     * Mostrar registros DB VideoConsulta
+     */
+    $("#prevSaludV").change(function () {
+        $("#prevSaludV option:selected").each(function () {
+            idprev = $(this).val();
+            idtipos = $('#idTipoV').val();
+            $.post("php/ajax/getEspecialidadesV.php", { idprev: idprev, idtipos: idtipos }, function (data) {
+                $("#espeMedicaV").html(data);
+            });
+        });
+    })
+
+    /**
+     * Insertar registros DB Consulta
+     */
+    $("#formConsulta").submit(function (e) {
+        e.preventDefault();
+        var datos = $(this).serialize();
+        //console.log(datos);
+        $.ajax({
+            type: "POST",
+            url: "php/addDemo.php",
+            data: datos,
+            success: function (data) {
+                if (data == 'ok') {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Solicitud Exitosa',
+                        text: 'Su reserva de hora ha sido solicitada satisfactoriamente. Una copia de esta solicitud fue enviada a tu correo electrónico.',
+                        footer: '<a href="mailto:soporte@buscamedica.cl">Si necesitas ayuda comunicate con Soporte</a>'
+                    })
+                    $('#formConsulta')[0].reset();
+                    $('#consulta').modal('hide');
+                    // console.log('Exitazooooooo');
+                } else if (data == 'vacio') {
+                    swal({
+                        title: "Algo salio mal!",
+                        text: "Un campo esta vacio, recuerda registrar todos los datos.",
+                        icon: "error",
+                        button: "Cerrar",
+                    });
+                    $('#formConsulta')[0].reset();
+                    $('#consulta').modal('hide');
+                } else {
+                    console.log(data);
+                }
+            }
+        });
+    })
+
+    $("#formExamen").submit(function (e) {
+        e.preventDefault();
+        var datos = $(this).serialize();
+        $.ajax({
+            type: "POST",
+            url: "php/addDemo.php",
+            data: datos,
+            success: function (data) {
+                if (data == 'ok') {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Solicitud Exitosa',
+                        text: 'Su reserva de hora ha sido solicitada satisfactoriamente. Una copia de esta solicitud fue enviada a tu correo electrónico.',
+                        footer: '<a href="mailto:soporte@buscamedica.cl">Si necesitas ayuda comunicate con Soporte</a>'
+                    })
+                    $('#formExamen')[0].reset();
+                    $('#examen').modal('hide');
+                } else if (data == 'vacio') {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Algo salio mal!',
+                        text: 'La solicitud de hora fue rechazada, revisa los datos ingresados o reintenta más tarde.',
+                        footer: '<a href="mailto:soporte@buscamedica.cl">Si necesitas ayuda comunicate con Soporte</a>'
+                    })
+                    $('#examen').modal('hide');
+                } else {
+                    console.log(data);
+                }
+            }
+        });
+    })
+
+    $("#formVideo").submit(function (e) {
+        e.preventDefault();
+        var datos = $(this).serialize();
+        $.ajax({
+            type: "POST",
+            url: "php/addDemo.php",
+            data: datos,
+            success: function (data) {
+                if (data == 'ok') {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Solicitud Exitosa',
+                        text: 'Su reserva de hora ha sido solicitada satisfactoriamente. Una copia de esta solicitud fue enviada a tu correo electrónico.',
+                        footer: '<a href="mailto:soporte@buscamedica.cl">Si necesitas ayuda comunicate con Soporte</a>'
+                    })
+                    $('#formVideo')[0].reset();
+                    $('#videoconsulta').modal('hide');
+                } else if (data == 'vacio') {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Algo salio mal!',
+                        text: 'La solicitud de hora fue rechazada, revisa los datos ingresados o reintenta más tarde.',
+                        footer: '<a href="mailto:soporte@buscamedica.cl">Si necesitas ayuda comunicate con Soporte</a>'
+                    })
+                    $('#videoconsulta').modal('hide');
+                } else {
+                    console.log(data);
+                }
+            }
+        });
+    })
+
+    $("#formHigienizacion").submit(function (e) {
+        e.preventDefault();
+        var datos = $(this).serialize();
+        $.ajax({
+            type: "POST",
+            url: "php/addDemo.php",
+            data: datos,
+            success: function (data) {
+                if (data == 'ok') {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Solicitud Exitosa',
+                        text: 'Su reserva de hora ha sido solicitada satisfactoriamente. Una copia de esta solicitud fue enviada a tu correo electrónico.',
+                        footer: '<a href="mailto:soporte@buscamedica.cl">Si necesitas ayuda comunicate con Soporte</a>'
+                    })
+                    $('#formHigienizacion')[0].reset();
+                    $('#higienizacion').modal('hide');
+                } else if (data == 'vacio') {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Algo salio mal!',
+                        text: 'La solicitud de hora fue rechazada, revisa los datos ingresados o reintenta más tarde.',
+                        footer: '<a href="mailto:soporte@buscamedica.cl">Si necesitas ayuda comunicate con Soporte</a>'
+                    })
+                    $('#higienizacion').modal('hide');
+                } else {
+                    console.log(data);
+                }
+            }
         });
     })
 });
