@@ -290,7 +290,7 @@ require('php/conexion.php');
                 <div class="icon"><i class="icofont-medical-sign"></i></div>
               </a>
               <h4><a href="#" data-toggle="modal" data-target="#consulta">Consulta</a></h4>
-              <p>Esta sección sirve para describir de que trata la hora a solicitar</p>
+              <p>Formulario para reservar hora</p>
             </div>
           </div>
 
@@ -300,7 +300,7 @@ require('php/conexion.php');
                 <div class="icon"><i class="icofont-beaker"></i></div>
               </a>
               <h4><a href="#" data-toggle="modal" data-target="#examen">Exámen</a></h4>
-              <p>Esta sección sirve para describir de que trata la hora a solicitar</p>
+              <p>Formulario para reservar hora</p>
             </div>
           </div>
 
@@ -310,7 +310,7 @@ require('php/conexion.php');
                 <div class="icon"><i class="icofont-video-cam"></i></div>
               </a>
               <h4><a href="#" data-toggle="modal" data-target="#videoconsulta">Video Consulta</a></h4>
-              <p>Esta sección sirve para describir de que trata la hora a solicitar</p>
+              <p>Formulario para reservar hora</p>
             </div>
           </div>
 
@@ -320,7 +320,7 @@ require('php/conexion.php');
                 <div class="icon"><i class="icofont-heartbeat"></i></div>
               </a>
               <h4><a href="#" data-toggle="modal" data-target="#higienizacion">Higienización Rayos UV-C</a></h4>
-              <p>Esta sección sirve para describir de que trata la hora a solicitar</p>
+              <p>Formulario para reservar hora</p>
             </div>
           </div>
 
