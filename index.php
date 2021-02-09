@@ -66,17 +66,6 @@ require('php/conexion.php');
   <!-- Css maestro -->
 
   <link href="assets/css/style.css" rel="stylesheet">
-  <style>
-  .owl-theme .owl-nav [class*=owl-] {
-    background-color: tan;
-  }
-
-  </style>
-
-  <style>
-
-  </style>
-
 </head>
 
 
