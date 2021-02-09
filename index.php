@@ -66,6 +66,12 @@ require('php/conexion.php');
   <!-- Css maestro -->
 
   <link href="assets/css/style.css" rel="stylesheet">
+  <style>
+  .owl-theme .owl-nav [class*=owl-] {
+    background-color: tan;
+  }
+
+  </style>
 
 </head>
 
@@ -558,11 +564,8 @@ require('php/conexion.php');
                     Especialidad</div>
                   <div class="sub-title">
                     Cardiología</div>
-                  <p>
-                    Rama de la medicina que se especializa en el diagnóstico y tratamiento de
-                    enfermedades del corazón, los vasos sanguíneos y el sistema circulatorio.
-                    Estas enfermedades incluyen enfermedad de la arteria coronaria, problemas
-                    del ritmo del corazón e insuficiencia cardíaca.</p>
+                  <p>Rama de la medicina que se especializa en el diagnóstico y tratamiento de enfermedades del corazón,
+                  los vasos sanguíneos y el sistema circulatorio.</p>
                 </div>
               </div>
 
@@ -575,46 +578,8 @@ require('php/conexion.php');
                     Especialidad</div>
                   <div class="sub-title">
                     Dermatología</div>
-                  <p>
-                    La Dermatología es una especialidad médico-quirúrgica que se ocupa del conocimiento
-                    de la piel humana y de las enfermedades que primitiva o secundariamente la afectan,
-                    así como de los métodos para la prevención de las mismas y para la preservación o
-                    la recuperación de la normalidad cutánea.</p>
-                </div>
-              </div>
-
-              <div class="card">
-                <div class="img">
-                  <img src="assets/img/especialidad/vene_espe.png" alt="">
-                </div>
-                <div class="content">
-                  <div class="title">
-                    Especialidad</div>
-                  <div class="sub-title">
-                    Venereología</div>
-                  <p>
-                    La Venereología es una subespecialidad de la especialidad de Dermatología
-                    que se encarga del diagnóstico y tratamiento de las enfermedades de transmisión sexual (ETS).</p>
-                </div>
-              </div>
-
-              <div class="card">
-                <div class="img">
-                  <img src="assets/img/especialidad/endo_espe.png" alt="">
-                </div>
-                <div class="content">
-                  <div class="title">
-                    Especialidad</div>
-                  <div class="sub-title">
-                    Endocrinología</div>
-                  <p>
-                    La endocrinología es una disciplina de la medicina que estudia el sistema endocrino y
-                    las enfermedades provocadas por un funcionamiento inadecuado del mismo. Algunas de las
-                    enfermedades de las que se ocupa la endocrinología son la diabetes mellitus provocada
-                    por deficiencia de insulina o resistencia a su acción, el hipotiroidismo por déficit
-                    en la producción de hormonas tiroideas, el hipertiroidismo por excesiva producción de
-                    hormonas tiroideas y la enfermedad de Cushing debida generalmente a excesiva producción
-                    de cortisol por las glándulas suprarrenales.</p>
+                  <p>La Dermatología es una especialidad médico-quirúrgica que se ocupa del conocimiento
+                    de la piel humana y de las enfermedades que primitiva o secundariamente la afectan.</p>
                 </div>
               </div>
 
@@ -627,11 +592,22 @@ require('php/conexion.php');
                     Especialidad</div>
                   <div class="sub-title">
                     Diabetes</div>
-                  <p>
-                    La diabetes es una enfermedad en la que los niveles de glucosa (azúcar) de la sangre están
-                    muy altos. La glucosa proviene de los alimentos que consume. La insulina es una hormona que
-                    ayuda a que la glucosa entre a las células para suministrarles energía. En la diabetes tipo
-                    1, el cuerpo no produce insulina.</p>
+                  <p>La diabetes es una enfermedad en la que los niveles de glucosa (azúcar) de la sangre están
+                    muy altos. La glucosa proviene de los alimentos que consume.</p>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="img">
+                  <img src="assets/img/especialidad/endo_espe.png" alt="">
+                </div>
+                <div class="content">
+                  <div class="title">
+                    Especialidad</div>
+                  <div class="sub-title">
+                    Endocrinología</div>
+                  <p>Algunas de las enfermedades de las que se ocupa la endocrinología son la diabetes, el hipotiroidismo, el hipertiroidismo y 
+                  la enfermedad de Cushing debida generalmente a excesiva producción de cortisol.</p>
                 </div>
               </div>
 
@@ -644,8 +620,7 @@ require('php/conexion.php');
                     Especialidad</div>
                   <div class="sub-title">
                     Enfermedades Respiratorias</div>
-                  <p>
-                    Las enfermedades respiratorias afectan a las vías nasales, los bronquios y los pulmones, principalmente.</p>
+                  <p>Las enfermedades respiratorias afectan a las vías nasales, los bronquios y los pulmones, principalmente.</p>
                 </div>
               </div>
 
@@ -658,10 +633,7 @@ require('php/conexion.php');
                     Especialidad</div>
                   <div class="sub-title">
                     Fisiatría</div>
-                  <p>
-                    La medicina física y rehabilitación, también llamada fisiatría, es una especialidad médica que
-                    se ocupa del diagnóstico de los pacientes con una enfermedad, un trastorno o una lesión que
-                    deterioran las funciones normales.</p>
+                  <p>Es una especialidad médica que se ocupa del diagnóstico de los pacientes con una enfermedad, un trastorno o una lesión que deterioran las funciones normales.</p>
                 </div>
               </div>
 
@@ -674,11 +646,7 @@ require('php/conexion.php');
                     Especialidad</div>
                   <div class="sub-title">
                     Gastroenterología</div>
-                  <p>
-                    La gastroenterología es la subespecialidad derivada de la medicina interna, dedicada al diagnóstico
-                    y tratamiento de enfermedades que afectan al tubo digestivo, es decir, esófago, estómago, intestino
-                    delgado (duodeno, yeyuno e íleon), colon y recto, y a sus glándulas anexas (hígado, vías biliares
-                    y páncreas).</p>
+                  <p>Subespecialidad dedicada al diagnóstico y tratamiento de enfermedades que afectan al tubo digestivo, es decir, esófago, estómago, intestino delgado, colon y recto.</p>
                 </div>
               </div>
 
@@ -691,8 +659,7 @@ require('php/conexion.php');
                     Especialidad</div>
                   <div class="sub-title">
                     Geriatría</div>
-                  <p>
-                    La geriatría es una especialidad médica dedicada al estudio de la prevención, el diagnóstico, el tratamiento y la rehabilitación de las enfermedades en las personas de la tercera edad.</p>
+                  <p>La geriatría es una especialidad médica dedicada al estudio de la prevención, el diagnóstico, el tratamiento y la rehabilitación de las enfermedades en las personas de la tercera edad.</p>
                 </div>
               </div>
 
@@ -711,20 +678,6 @@ require('php/conexion.php');
 
               <div class="card">
                 <div class="img">
-                  <img src="assets/img/especialidad/obste_espe.png" alt="">
-                </div>
-                <div class="content">
-                  <div class="title">
-                    Especialidad</div>
-                  <div class="sub-title">
-                    Obstetricia</div>
-                  <p>
-                    La obstetricia o tocología es la especialidad médica que se ocupa del embarazo, el parto y el puerperio, incluyendo las situaciones de riesgo que requieran de una intervención quirúrgica. Como especialidad médica la obstetricia es combinada con la ginecología bajo la disciplina conocida como obstetricia y ginecología.</p>
-                </div>
-              </div>
-
-              <div class="card">
-                <div class="img">
                   <img src="assets/img/especialidad/herma_espe.png" alt="">
                 </div>
                 <div class="content">
@@ -732,21 +685,7 @@ require('php/conexion.php');
                     Especialidad</div>
                   <div class="sub-title">
                     Hematología</div>
-                  <p>
-                    La hematología es la especialidad médica que se ocupa del estudio, diagnóstico, tratamiento y prevención de las enfermedades de la sangre y los órganos que participan en su producción, como son la médula ósea, el bazo o los ganglios, entre otros.</p>
-                </div>
-              </div>
-
-              <div class="card">
-                <div class="img">
-                  <img src="assets/img/especialidad/onco_espe.png" alt="">
-                </div>
-                <div class="content">
-                  <div class="title">
-                    Especialidad</div>
-                  <div class="sub-title">
-                    Oncología</div>
-                  <p>La oncología es la rama de la medicina que estudia y trata las neoplasias, con especial atención a los tumores malignos o cáncer. Como especialidad médica, derivada del tronco de la medicina interna, se dedica al diagnóstico y tratamiento del cáncer, centrada en la atención del enfermo de cáncer y su tratamiento, entre otros por medio de la quimioterapia, terapia hormonal y otros medicamentos. Mientras que como especialidad quirúrgica se encarga de la extirpación del tumor y de los tejidos circundantes. La oncología radioterápica aprovecha la radioterapia para tratar el cáncer.</p>
+                  <p>Especialidad médica que se ocupa del estudio, diagnóstico, tratamiento y prevención de las enfermedades de la sangre y los órganos que participan en su producción como son la médula ósea.</p>
                 </div>
               </div>
 
@@ -759,8 +698,7 @@ require('php/conexion.php');
                     Especialidad</div>
                   <div class="sub-title">
                     Imagenología</div>
-                  <p>
-                    La imagenología pertenece al área de la salud y tiene por objetivo revisar y examinar enfermedades o bien, estudiar la anatomía del cuerpo humano, por medio de imágenes. La radiología, la termografía médica, la endoscopia, la microscopía y la fotografía médica forman parte de estas técnicas.</p>
+                  <p>Estudiar la anatomía del cuerpo humano por medio de imágenes. La radiología, la termografía médica, la endoscopia, la microscopía y la fotografía médica forman parte de estas técnicas.</p>
                 </div>
               </div>
 
@@ -773,8 +711,7 @@ require('php/conexion.php');
                     Especialidad</div>
                   <div class="sub-title">
                     Infectología</div>
-                  <p>
-                    La Infectología es una especialidad de la Medicina Interna que tiene por objeto el estudio, diagnóstico y tratamiento de las enfermedades por agentes infecciosos (virus, bacterias, parásitos, hongos, etc.)</p>
+                  <p>La Infectología es una especialidad de la Medicina Interna que tiene por objeto el estudio, diagnóstico y tratamiento de las enfermedades por agentes infecciosos.</p>
                 </div>
               </div>
 
@@ -787,8 +724,7 @@ require('php/conexion.php');
                     Especialidad</div>
                   <div class="sub-title">
                     Kinesiología</div>
-                  <p>
-                    La kinesiología o quinesilogía es el estudio científico del movimiento del cuerpo. La kinesiología aborda los principios y mecanismos de movimiento fisiológicos, biomecánicos y psicodinámicos.</p>
+                  <p>La kinesiología o quinesilogía​​ es el estudio científico del movimiento del cuerpo. La kinesiología aborda los principios y mecanismos de movimiento fisiológicos, biomecánicos y psicodinámicos.</p>
                 </div>
               </div>
 
@@ -801,8 +737,7 @@ require('php/conexion.php');
                     Especialidad</div>
                   <div class="sub-title">
                     Medicina General</div>
-                  <p>
-                    La Medicina general es el primer nivel de atención médica cuyo objetivo es prevenir, detectar y tratar enfermedades comunes, así como también derivar con el especialista indicado, en caso de ser necesario.</p>
+                  <p>La Medicina general es el primer nivel de atención médica cuyo objetivo es prevenir, detectar y tratar enfermedades comunes, así como también derivar con el especialista indicado.</p>
                 </div>
               </div>
 
@@ -815,8 +750,7 @@ require('php/conexion.php');
                     Especialidad</div>
                   <div class="sub-title">
                     Medicina Interna</div>
-                  <p>
-                    La Medicina Interna es la especialidad médica que brinda atención integral a pacientes mayores de 15 años, con foco en el diagnóstico y tratamiento no quirúrgico de enfermedades que afectan a distintos sistemas del cuerpo.</p>
+                  <p>La Medicina Interna es la especialidad médica que brinda atención integral a pacientes mayores de 15 años, con foco en el diagnóstico y tratamiento no quirúrgico de enfermedades.</p>
                 </div>
               </div>
 
@@ -829,8 +763,20 @@ require('php/conexion.php');
                     Especialidad</div>
                   <div class="sub-title">
                     Nefrología</div>
-                  <p>
-                    La nefrología es la especialidad médica rama de la medicina interna que se ocupa del estudio de la estructura y la función renal, tanto en la salud como en la enfermedad, incluyendo la prevención y tratamiento de las enfermedades renales.</p>
+                  <p>La Medicina Interna es la especialidad médica que brinda atención integral a pacientes mayores de 15 años, con foco en el diagnóstico y tratamiento no quirúrgico de enfermedades.</p>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="img">
+                  <img src="assets/img/especialidad/obste_espe.png" alt="">
+                </div>
+                <div class="content">
+                  <div class="title">
+                    Especialidad</div>
+                  <div class="sub-title">
+                    Obstetricia</div>
+                  <p>La obstetricia es la especialidad médica que se ocupa del embarazo, el parto y el puerperio, incluyendo las situaciones de riesgo que requieran de una intervención quirúrgica.</p>
                 </div>
               </div>
 
@@ -843,8 +789,20 @@ require('php/conexion.php');
                     Especialidad</div>
                   <div class="sub-title">
                     Oftalmología</div>
-                  <p>
-                    La Oftalmología es la especialidad médica que estudia las enfermedades de ojo y su tratamiento, incluyendo el globo ocular, su musculatura, el sistema lagrimal y los párpados.</p>
+                  <p>La Oftalmología es la especialidad médica que estudia las enfermedades de ojo y su tratamiento, incluyendo el globo ocular, su musculatura, el sistema lagrimal y los párpados.</p>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="img">
+                  <img src="assets/img/especialidad/onco_espe.png" alt="">
+                </div>
+                <div class="content">
+                  <div class="title">
+                    Especialidad</div>
+                  <div class="sub-title">
+                    Oncología</div>
+                  <p>Estudia y trata las neoplasias, los tumores malignos o cáncer. Centra la atención en el enfermo de cáncer y su tratamiento, entre otros por medio de la quimioterapia, y otros medicamentos.</p>
                 </div>
               </div>
 
@@ -857,8 +815,7 @@ require('php/conexion.php');
                     Especialidad</div>
                   <div class="sub-title">
                     Otorrinolaringología</div>
-                  <p>
-                    La Otorrinolaringología es una especialidad médico-quirúrgica que previene, diagnostica y trata las afecciones y enfermedades que afectan a la boca, garganta, oídos, nariz o cuello.</p>
+                  <p>La Otorrinolaringología es una especialidad médico-quirúrgica que previene, diagnostica y trata las afecciones y enfermedades que afectan a la boca, garganta, oídos, nariz o cuello.</p>
                 </div>
               </div>
 
@@ -871,8 +828,7 @@ require('php/conexion.php');
                     Especialidad</div>
                   <div class="sub-title">
                     Pediatría</div>
-                  <p>
-                    La pediatría es la especialidad médica que estudia al niño y sus enfermedades. Su contenido es mucho mayor que la curación de las enfermedades de los niños, ya que la pediatría estudia tanto al niño sano como al enfermo.</p>
+                  <p>Estudia al niño y sus enfermedades. Su contenido es mucho mayor que la curación de las enfermedades de los niños, ya que la pediatría estudia tanto al niño sano como al enfermo</p>
                 </div>
               </div>
 
@@ -885,8 +841,7 @@ require('php/conexion.php');
                     Especialidad</div>
                   <div class="sub-title">
                     Psicología</div>
-                  <p>
-                    La psicología es, a la vez, una profesión, una disciplina académica y una ciencia que trata el estudio y el análisis de la conducta y los procesos mentales de los individuos y de grupos humanos.</p>
+                  <p>La psicología​ ​ es, a la vez, una profesión, una disciplina académica​ y una ciencia que trata el estudio y el análisis de la conducta y los procesos mentales de los individuos y de grupos humanos.</p>
                 </div>
               </div>
 
@@ -899,8 +854,7 @@ require('php/conexion.php');
                     Especialidad</div>
                   <div class="sub-title">
                     Psiquiatría</div>
-                  <p>
-                    La psiquiatría es la especialidad de la medicina que trabaja en el estudio, prevención, diagnóstico y tratamiento de los trastornos mentales, basándose en conocimientos biológicos, psicológicos y sociales.</p>
+                  <p>Especialidad de la medicina que trabaja en el estudio, prevención, diagnóstico y tratamiento de los trastornos mentales, basándose en conocimientos biológicos, psicológicos y sociales.</p>
                 </div>
               </div>
 
@@ -913,8 +867,7 @@ require('php/conexion.php');
                     Especialidad</div>
                   <div class="sub-title">
                     Radiología</div>
-                  <p>
-                    La radiología es la especialidad médica, que se ocupa de generar imágenes del interior del cuerpo mediante diferentes agentes físicos y de utilizar estas imágenes para el diagnóstico y, en menor medida, para el pronóstico y el tratamiento de las enfermedades.</p>
+                  <p>Se ocupa de generar imágenes del interior del cuerpo mediante diferentes agentes físicos y de utilizar estas imágenes para el diagnóstico y para pronóstico y tratamiento de enfermedades.</p>
                 </div>
               </div>
 
@@ -927,8 +880,7 @@ require('php/conexion.php');
                     Especialidad</div>
                   <div class="sub-title">
                     Reumatología</div>
-                  <p>
-                    La reumatología es una especialidad médica dedicada a los trastornos médicos del aparato locomotor y del tejido conectivo, que abarca un gran número de entidades clínicas conocidas en conjunto como enfermedades reumáticas, a las que se suman un gran grupo de enfermedades de afectación sistémica: las conectivopatías.</p>
+                  <p>Especialidad médica dedicada a los trastornos médicos del aparato locomotor y del tejido conectivo, que abarca un gran número de enfermedades reumáticas.</p>
                 </div>
               </div>
 
@@ -941,8 +893,7 @@ require('php/conexion.php');
                     Especialidad</div>
                   <div class="sub-title">
                     Traumatología</div>
-                  <p>
-                    La Traumatología es una especialidad médico-quirúrgica que se encarga de la prevención, diagnóstico y tratamiento de las enfermedades y lesiones que afectan al sistema músculo esquelético, es decir, a huesos, músculos y tendones.</p>
+                  <p>Especialidad que se encarga de la prevención, diagnóstico y tratamiento de las enfermedades y lesiones que afectan al sistema músculo esquelético, es decir, a huesos, músculos y tendones.</p>
                 </div>
               </div>
 
@@ -955,8 +906,20 @@ require('php/conexion.php');
                     Especialidad</div>
                   <div class="sub-title">
                     Urología</div>
-                  <p>
-                    La urología es la especialidad médico-quirúrgica que se ocupa del estudio, diagnóstico y tratamiento de las patologías que afectan al aparato urinario, glándulas suprarrenales y retroperitoneal de ambos sexos, así como el aparato reproductor masculino.</p>
+                  <p>Se ocupa del estudio, diagnóstico y tratamiento de las patologías que afectan al aparato urinario, glándulas suprarrenales de ambos sexos, y del aparato reproductor masculino.</p>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="img">
+                  <img src="assets/img/especialidad/vene_espe.png" alt="">
+                </div>
+                <div class="content">
+                  <div class="title">
+                    Especialidad</div>
+                  <div class="sub-title">
+                    Venereología</div>
+                  <p>La Venereología es una subespecialidad de la especialidad de Dermatología que se encarga del diagnóstico y tratamiento de las enfermedades de transmisión sexual (ETS).</p>
                 </div>
               </div>
 

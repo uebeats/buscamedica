@@ -189,7 +189,7 @@
         responsive: {
             0: {
                 items: 1,
-                nav: true
+                nav: false
             },
             600: {
                 items: 2,
@@ -197,7 +197,7 @@
             },
             1000: {
                 items: 3,
-                nav: true,
+                nav: false,
                 loop: false,
                 margin: 10
             }
@@ -279,6 +279,7 @@ $(document).ready(function() {
     $('div.setup-panel div a.btn-success').trigger('click');
     /** Fin Multistep Formulario Buscamedica */
 });
+
 
 /**
  * Ajax Formulario
