@@ -6,7 +6,7 @@
 require_once('../conexion.php');
 
 /**
- * Consulta SQL para listar las especialidades
+ * Consulta SQL para listar las comunas
  */
 
 $v_prev = $_POST['idprev'];

@@ -73,6 +73,10 @@ require('php/conexion.php');
 
   </style>
 
+  <style>
+
+  </style>
+
 </head>
 
 
@@ -113,7 +117,7 @@ require('php/conexion.php');
 
 
 
-      <a href="index.html" class="logo mr-auto"><img src="assets/img/logo-web.png" alt="" class="img-fluid"></a>
+      <a href="index.php" class="logo mr-auto"><img src="assets/img/logo-web.png" alt="" class="img-fluid"></a>
 
 
 
@@ -231,7 +235,7 @@ require('php/conexion.php');
 
                     <i class='bx bxl-play-store'></i>
 
-                    <h4>Descarga nuestra app en Play Store</h4>
+                    <h4>Descarga nuestra app desde Play Store</h4>
 
                     <p>Reserva tu hora médica, desde cualquier dispositivo móvil o computador.</p>
 
@@ -245,7 +249,7 @@ require('php/conexion.php');
 
                     <i class='bx bxs-map'></i>
 
-                    <h4>Completa tus datos para iniciar la búsqueda</h4>
+                    <h4>Ingresa tus datos para iniciar la búsqueda</h4>
 
                     <p>Nos encargaremos de buscarte la mejor cita médica para que puedas acudir de forma rápida y segura.</p>
 
@@ -259,9 +263,9 @@ require('php/conexion.php');
 
                     <i class='bx bx-mail-send'></i>
 
-                    <h4>Notificación de confirmación</h4>
+                    <h4>Confirmación de hora reservada</h4>
 
-                    <p>Una vez solicitada la hora médica y el médico haya aceptado. Te enviaremos una notificación a tu email.</p>
+                    <p>Una vez el doctor haya confirmado, TODO LISTO!.. Enviaremos una notificación a tu email.</p>
 
                   </div>
 
@@ -282,44 +286,52 @@ require('php/conexion.php');
     </section><!-- End Why Us Section -->
 
 
-    <!-- ======= New Services ======= -->
-    <section id="services" class="services">
+    <!-- ======= New Reserva ======= -->
+    <section id="reserva" class="services">
       <div class="container">
 
         <div class="section-title">
-          <h2>Reserva tu hora 2.0</h2>
+          <h2>Reserva tu hora</h2>
         </div>
 
         <div class="row">
           <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
             <div class="icon-box">
-              <div class="icon"><i class="icofont-medical-sign"></i></div>
-              <h4><a href="#" id="atypeHora" data-toggle="modal" data-target="#consulta">Consulta</a></h4>
-              <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
+              <a href="#" data-toggle="modal" data-target="#consulta">
+                <div class="icon"><i class="icofont-medical-sign"></i></div>
+              </a>
+              <h4><a href="#" data-toggle="modal" data-target="#consulta">Consulta</a></h4>
+              <p>Esta sección sirve para describir de que trata la hora a solicitar</p>
             </div>
           </div>
 
           <div class="col-lg-3 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
             <div class="icon-box">
-              <div class="icon"><i class="icofont-beaker"></i></div>
+              <a href="#" data-toggle="modal" data-target="#examen">
+                <div class="icon"><i class="icofont-beaker"></i></div>
+              </a>
               <h4><a href="#" data-toggle="modal" data-target="#examen">Exámen</a></h4>
-              <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
+              <p>Esta sección sirve para describir de que trata la hora a solicitar</p>
             </div>
           </div>
 
           <div class="col-lg-3 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
             <div class="icon-box">
-              <div class="icon"><i class="icofont-video-cam"></i></div>
+              <a href="#" data-toggle="modal" data-target="#videoconsulta">
+                <div class="icon"><i class="icofont-video-cam"></i></div>
+              </a>
               <h4><a href="#" data-toggle="modal" data-target="#videoconsulta">Video Consulta</a></h4>
-              <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
+              <p>Esta sección sirve para describir de que trata la hora a solicitar</p>
             </div>
           </div>
 
           <div class="col-lg-3 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
             <div class="icon-box">
-              <div class="icon"><i class="icofont-heartbeat"></i></div>
+              <a href="#" data-toggle="modal" data-target="#higienizacion">
+                <div class="icon"><i class="icofont-heartbeat"></i></div>
+              </a>
               <h4><a href="#" data-toggle="modal" data-target="#higienizacion">Higienización Rayos UV-C</a></h4>
-              <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
+              <p>Esta sección sirve para describir de que trata la hora a solicitar</p>
             </div>
           </div>
 
@@ -327,211 +339,18 @@ require('php/conexion.php');
 
       </div>
 
-      <!-- Modal -->
-      <div class="modal fade" id="consulta" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="horaConsulta">Reserva de hora para Consulta</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <div class="stepwizard">
-                <div class="stepwizard-row setup-panel">
-                    <div class="stepwizard-step col-xs-3">
-                        <a href="#step-1" type="button" class="btn btn-success btn-circle">1</a>
-                        <p><small>Buscar hora médica</small></p>
-                    </div>
-                    <div class="stepwizard-step col-xs-3">
-                        <a href="#step-2" type="button" class="btn btn-secondary btn-circle" disabled="disabled">2</a>
-                        <p><small>Solicitar hora médica</small></p>
-                    </div>
-                </div>
-              </div>
-              <form name="formConsulta" id="formConsulta" method="POST">
-                <div class="panel panel-primary setup-content" id="step-1">
-                  <div class="panel-body">
-                    <input name="idTipoC" id="idTipoC" type="hidden" value="1">
-                    <div class="form-row">
-                      <div class="col-md-12 form-group">
-                        <label for="prevSaludC" class="label-reserva">Seleccione su previsión <span class="text-danger ml-auto">*</span></label>
-                        <select name="prevSaludC" id="prevSaludC" class="form-control" required="required">
-                          <?php
-                          /**
-                           * Consulta SQL para listar las previsiones
-                           */
-                          $v_tipo = filter_var('1', FILTER_SANITIZE_NUMBER_INT);
-                          /*
-                          1 = Consulta, 
-                          2 = Examen, 
-                          3 = Video Consulta, 
-                          4 = Higienización 
-                          */
+      <!--  /modals.php -->
+      <?php include('modals/modalConsulta.php'); ?>
 
-                          $stmt_prev = $con->prepare("
-                          SELECT prevision.nombreprevision, prevision.idprevision FROM prevision, medicoprevision 
-                          WHERE prevision.idprevision = medicoprevision.idprevision 
-                          AND SUBSTRING(medicoprevision.tipo, " . $v_tipo . ", 1) <> '0' 
-                          AND medicoprevision.tipo <> '' 
-                          GROUP BY prevision.nombreprevision, prevision.idprevision"
-                          );
+      <!--  /modals.php -->
+      <?php include('modals/modalExamen.php'); ?>
 
-                          $stmt_prev->execute();
-                          $previsiones = $stmt_prev->fetchAll();
+      <!--  /modals.php -->
+      <?php include('modals/modalVideo.php'); ?>
 
-                          foreach ($previsiones as $prevision) { ?>
-                            <option></option>
-                            <option value="<?php echo $prevision['idprevision']; ?>"><?php echo $prevision['nombreprevision']; ?></option>
-                          <?php } ?>
-                        </select>
-                      </div>
+      <!--  /modals.php -->
+      <?php include('modals/modalHigienizacion.php'); ?>
 
-                      <div class="col-md-12 form-group">
-                        <label for="espeMedicaC" class="label-reserva">Seleccione la especialidad <span class="text-danger ml-auto">*</span></label>
-                        <select name="espeMedicaC" id="espeMedicaC" class="form-control" required="required">
-                        <select>
-                      </div>
-
-                      <div class="col-md-12 form-group">
-                        <label for="comunasC" class="label-reserva">Seleccione la comuna <span class="text-danger ml-auto">*</span></label>
-                        <select name="comunasC" id="comunasC" class="form-control" required="required">
-                          <option></option>
-                        <select>
-                      </div>
-
-                      <div class="col-md-12 form-group">
-                        <label for="centroMedicoC" class="label-reserva">Seleccione el centro médico <span class="text-danger ml-auto">*</span></label>
-                        <select name="centroMedicoC" id="centroMedicoC" class="form-control" required="required">
-                          <option></option>
-                        <select>
-                      </div>
-
-                      <div class="col-md-12 form-group">
-                        <label for="medicoC" class="label-reserva">Seleccione el médico <span class="text-danger ml-auto">*</span></label>
-                        <select name="medicoC" id="medicoC" class="form-control" required="required">
-                          <option></option>
-                        <select>
-                      </div>
-
-                      <button type="button" class="mr-auto btn mb-2 btn-secondary" data-dismiss="modal">Cerrar</button>
-                      <button class="btn btn-primary nextBtn ml-auto mb-2" type="button">Siguiente</button>
-
-                    </div>
-                  </div>
-                </div>
-                <div class="panel panel-primary setup-content" id="step-2">
-                  <div class="panel-body">
-                    <div class="form-row">
-                        <div class="col-md-12 form-group">
-                            <label for="nameUser" class="label-reserva">Nombre Completo <span class="text-danger ml-auto">*</span></label>
-                            <input name="nameUser" id="nameUser" class="form-control" placeholder="Ingrese su nombre completo" required="required">
-                        </div>
-
-                        <div class="col-md-12 form-group">
-                            <label for="rutUser" class="label-reserva">R.U.T. <span class="text-danger ml-auto">*</span></label>
-                            <input name="rutUser" id="rutUser" class="form-control" placeholder="Ingrese R.U.T." required="required">
-                        </div>
-
-                        <div class="col-md-12 form-group">
-                            <label for="phoneUser" class="label-reserva">Teléfono <span class="text-danger ml-auto">*</span></label>
-                            <input name="phoneUser" id="phoneUser" class="form-control" placeholder="Ingrese su Teléfono" required="required">
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="col-md-12 form-group">
-                            <label for="emailUser" class="label-reserva">Correo Electrónico <span class="text-danger ml-auto">*</span></label>
-                            <input name="emailUser" id="emailUser" class="form-control" placeholder="Ingrese su correo electrónico" required="required">
-                        </div>
-
-                        <div class="col-md-12 form-group">
-                            <label for="dateAtencion" class="label-reserva">Fecha Atención <span class="text-danger ml-auto">*</span></label>
-                            <input type="datetime" name="dateAtencion" class="form-control datepicker" id="dateAtencion" placeholder="DD/MM/AA" required="required">
-                        </div>
-
-                        <div class="col-md-12 form-group">
-                            <label for="hourAtencion" class="label-reserva">Hora Atención <span class="text-danger ml-auto">*</span></label>
-                            <input type="time" name="hourAtencion" class="form-control timepicker" id="hourAtencion" required="required">
-                        </div>
-                        <button type="button" class="mr-auto btn mb-2 btn-secondary" data-dismiss="modal">Cerrar</button>
-                        <button id="btnReserva" class="ml-auto btn mb-2 btn-primary" type="submit">Solicitar hora médica</button>
-
-                    </div>
-                  </div>
-                </div>
-            </div>
-            </form>
-          </div>
-        </div>
-      </div>
-      <!-- /Modals -->
-      <!-- Modal -->
-      <div class="modal fade" id="examen" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Reserva Exámen</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <form>
-
-              </form>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- /Modals -->
-      <!-- Modal -->
-      <div class="modal fade" id="videoconsulta" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Reserva Video Consulta</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              ...
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- /Modals -->
-      <!-- Modal -->
-      <div class="modal fade" id="higienizacion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Reserva Higienización Rayos UV-C</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              ...
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- /Modals -->
     </section>
 
     <!-- ======= Departments Section ======= -->
@@ -1090,8 +909,6 @@ require('php/conexion.php');
 
     </section><!-- End Gallery Section -->
 
-
-
     <!-- ======= Contact Section ======= -->
 
     <section id="contacto" class="contact">
@@ -1242,8 +1059,6 @@ require('php/conexion.php');
       </div>
 
     </section><!-- End Contact Section -->
-
-
 
   </main><!-- End #main -->
 
@@ -1435,6 +1250,8 @@ require('php/conexion.php');
 
   <script src="assets/vendor/jquery.rut/jquery.rut.js"></script>
 
+  <script src="assets/vendor/jquery-step/jquery.steps.min.js"></script>
+
   <script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>
 
   <script src="assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
@@ -1447,6 +1264,51 @@ require('php/conexion.php');
 
   <script src="assets/js/main.js"></script>
   <script>
+    // Initialize wizard
+    $("#consulta-step").show().steps({
+      headerTag: "h3",
+      bodyTag: "section",
+      transitionEffect: "slideLeft",
+      enableFinishButton: false,
+      enablePagination: true,
+      enableAllSteps: false,
+      titleTemplate: "#title#",
+    });
+
+    // Initialize wizard
+    $("#examen-step").show().steps({
+      headerTag: "h3",
+      bodyTag: "section",
+      transitionEffect: "slideLeft",
+      enableFinishButton: false,
+      enablePagination: true,
+      enableAllSteps: false,
+      titleTemplate: "#title#",
+    });
+
+    // Initialize wizard
+    $("#videoconsulta-step").show().steps({
+      headerTag: "h3",
+      bodyTag: "section",
+      transitionEffect: "slideLeft",
+      enableFinishButton: false,
+      enablePagination: true,
+      enableAllSteps: false,
+      titleTemplate: "#title#",
+    });
+
+    // Initialize wizard
+    $("#higienizacion-step").show().steps({
+      headerTag: "h3",
+      bodyTag: "section",
+      transitionEffect: "slideLeft",
+      enableFinishButton: false,
+      enablePagination: false,
+      enableAllSteps: false,
+      titleTemplate: "#title#",
+    });
+
   </script>
 </body>
+
 </html>
