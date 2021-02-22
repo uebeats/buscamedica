@@ -28,9 +28,9 @@ GROUP BY m.nombremedico, m.idmedicos"
 
 $stmt_medico->execute();
 $medicos = $stmt_medico->fetchAll();
-
-foreach ($medicos as $medico) { ?>
-    <option></option>
+?>
+<option value="0">Selecciona una opción </option>
+<?php foreach ($medicos as $medico) { ?>
     <option value="<?php echo $medico['idmedicos']; ?>">
         <?php echo $medico['nombremedico']; ?>
     </option>

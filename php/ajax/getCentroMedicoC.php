@@ -28,9 +28,9 @@ GROUP BY centroatencion.nombrecentroatencion, centroatencion.idcentroatencion
 
 $stmt_cntro->execute();
 $centros = $stmt_cntro->fetchAll();
-
-foreach ($centros as $centro) { ?>
-    <option></option>
+?>
+<option value="0">Selecciona una opción </option>
+<?php foreach ($centros as $centro) { ?>
     <option value="<?php echo $centro['idcentroatencion']; ?>">
         <?php echo $centro['nombrecentroatencion']; ?>
     </option>

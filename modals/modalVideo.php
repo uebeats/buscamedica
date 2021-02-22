@@ -11,7 +11,7 @@
             <div class="modal-body">
                 <form name="formVideo" id="formVideo" method="POST">
                     <div id="videoconsulta-step">
-                        <h3>Buscador de Hora</h3>
+                        <h3>Información para búsqueda</h3>
                         <section>
                             <input name="idTipoV" id="idTipoV" type="hidden" value="3">
                             <div class="form-row">
@@ -68,6 +68,7 @@
                                 <div class="col-md-12 form-group">
                                     <label for="rutUserV" class="label-reserva">R.U.T. <span class="text-danger ml-auto">*</span></label>
                                     <input name="rutUserV" id="rutUserV" class="form-control" placeholder="Ingrese R.U.T." required="required">
+                                    <span id="validateRut4"></span>
                                 </div>
                             </div>
 
@@ -100,10 +101,12 @@
                             </div>
                         </section>
                     </div>
+                    <p class="text-center mt-3"><small>Los campos con (<span class="text-danger ml-auto">*</span>) son obligatorios.</small></p>
+
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary mr-auto" data-dismiss="modal">Cerrar</button>
-                <button type="submit" class="btn btn-primary">Solicitar Hora</button>
+                <button type="submit" class="btn btn-primary" id="btnVideo">Solicitar Hora</button>
             </div>
         </div>
         </form>

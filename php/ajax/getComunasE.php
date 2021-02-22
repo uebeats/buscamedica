@@ -26,9 +26,9 @@ GROUP BY comuna.nombrecomuna, comuna.idcomuna"
 
 $stmt_cmnas->execute();
 $comunas = $stmt_cmnas->fetchAll();
-
-foreach ($comunas as $comuna) { ?>
-    <option></option>
+?>
+<option value="0">Selecciona una opción </option>
+<?php foreach ($comunas as $comuna) { ?>
     <option value="<?php echo $comuna['idcomuna']; ?>">
         <?php echo $comuna['nombrecomuna']; ?>
     </option>

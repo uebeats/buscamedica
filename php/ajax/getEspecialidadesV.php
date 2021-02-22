@@ -24,9 +24,9 @@ $stmt_espe = $con->prepare("
 
 $stmt_espe->execute();
 $especialidades = $stmt_espe->fetchAll();
-
-foreach ($especialidades as $especialidad) { ?>
-    <option></option>
+?>
+<option value="0">Selecciona una opción </option>
+<?php foreach ($especialidades as $especialidad) { ?>
     <option value="<?php echo $especialidad['idespecialidad']; ?>">
         <?php echo $especialidad['nombreespecialidad']; ?>
     </option>

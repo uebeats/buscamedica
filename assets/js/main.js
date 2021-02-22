@@ -171,8 +171,9 @@
         $('.datepicker').datepicker({
             autoclose: true,
             language: 'es',
-            format: 'dd/mm/yyyy',
-            startDate: 'tomorrow'
+            format: 'dd-mm-yyyy',
+            startDate: 'tomorrow',
+            daysOfWeekDisabled: [0]
         });
     });
 
@@ -224,10 +225,44 @@ $(document).ready(function() {
     });
 
     /** Formateo a RUT CHILENO */
-    $('input#rutUser').rut();
-    $('input#rutUserE').rut();
-    $('input#rutUserV').rut();
-    $('input#rutUserH').rut();
+    $('#btnConsulta').attr('disabled', 'disabled');
+    $("input#rutUser").rut().on('rutValido', function(e, rut, dv) {
+        $('#btnConsulta').removeAttr('disabled', 'disabled');
+        $('#validateRut1').html("<span class='validoRut'>El rut " + rut + "-" + dv + " es correcto</span>");
+    }).on('rutInvalido', function(e) {
+        $('#validateRut1').html("<span class='invalidoRut'>El rut " + $(this).val() + " es inválido</span>");
+        $('#btnConsulta').attr('disabled', 'disabled');
+    });
+
+    $('#btnExamen').attr('disabled', 'disabled');
+    $("input#rutUserE").rut().on('rutValido', function(e, rut, dv) {
+        $('#btnExamen').removeAttr('disabled', 'disabled');
+        $('#validateRut2').html("<span class='validoRut'>El rut " + rut + "-" + dv + " es correcto</span>");
+    }).on('rutInvalido', function(e) {
+        $('#validateRut2').html("<span class='invalidoRut'>El rut " + $(this).val() + " es inválido</span>");
+        $('#btnExamen').attr('disabled', 'disabled');
+    });
+
+    $('#btnHigienizacion').attr('disabled', 'disabled');
+    $("input#rutUserH").rut().on('rutValido', function(e, rut, dv) {
+        $('#btnHigienizacion').removeAttr('disabled', 'disabled');
+        $('#validateRut3').html("<span class='validoRut'>El rut " + rut + "-" + dv + " es correcto</span>");
+    }).on('rutInvalido', function(e) {
+        $('#validateRut3').html("<span class='invalidoRut'>El rut " + $(this).val() + " es inválido</span>");
+        $('#btnHigienizacion').attr('disabled', 'disabled');
+    });
+
+    $('#btnVideo').attr('disabled', 'disabled');
+    $("input#rutUserV").rut().on('rutValido', function(e, rut, dv) {
+        $('#btnVideo').removeAttr('disabled', 'disabled');
+        $('#validateRut4').html("<span class='validoRut'>El rut " + rut + "-" + dv + " es correcto</span>");
+    }).on('rutInvalido', function(e) {
+        $('#validateRut4').html("<span class='invalidoRut'>El rut " + $(this).val() + " es inválido</span>");
+        $('#btnVideo').attr('disabled', 'disabled');
+    });
+
+    /** Fin Formateo a RUT CHILENO */
+
 });
 
 
@@ -239,7 +274,8 @@ $(document).ready(function() {
     /**
      * Mostrar registros DB Consulta
      */
-    $("#prevSaludC").change(function() {
+    $("#prevSaludC").change(function(e) {
+        e.preventDefault();
         $("#prevSaludC option:selected").each(function() {
             idprev = $(this).val();
             idtipos = $('#idTipoC').val();
@@ -347,131 +383,295 @@ $(document).ready(function() {
     $("#formConsulta").submit(function(e) {
         e.preventDefault();
         var datos = $(this).serialize();
-        //console.log(datos);
-        $.ajax({
-            type: "POST",
-            url: "php/addDemo.php",
-            data: datos,
-            success: function(data) {
-                if (data == 'ok') {
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Solicitud Exitosa',
-                        text: 'Su reserva de hora ha sido solicitada satisfactoriamente. Una copia de esta solicitud fue enviada a tu correo electrónico.',
-                        footer: '<a href="mailto:soporte@buscamedica.cl">Si necesitas ayuda comunicate con Soporte</a>'
-                    })
-                    $('#formConsulta')[0].reset();
-                    $('#consulta').modal('hide');
-                    // console.log('Exitazooooooo');
-                } else if (data == 'vacio') {
-                    swal({
-                        title: "Algo salio mal!",
-                        text: "Un campo esta vacio, recuerda registrar todos los datos.",
-                        icon: "error",
-                        button: "Cerrar",
-                    });
-                    $('#formConsulta')[0].reset();
-                    $('#consulta').modal('hide');
-                } else {
-                    console.log(data);
-                }
+        Swal.fire({
+            icon: 'question',
+            title: '¿Estás seguro?',
+            text: 'Estamos enviando una solicitud para reserva de hora médica',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si, estoy seguro',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+                $.ajax({
+                    type: "POST",
+                    url: "php/addConsulta.php",
+                    data: datos,
+                    success: function(data) {
+                        if (data == 'ok') {
+                            $('#consulta').modal('hide');
+                            let timerInterval
+                            Swal.fire({
+                                    icon: 'success',
+                                    title: 'Hemos enviado la solicitud',
+                                    html: 'Perfecto, una copia de esta solicitud será enviada a su correo electrónico. Estamos recargando la página en <b></b> segundos.',
+                                    timer: 10000,
+                                    timerProgressBar: true,
+                                    didOpen: () => {
+                                        Swal.showLoading()
+                                        timerInterval = setInterval(() => {
+                                            Swal.getContent().querySelector('b')
+                                                .textContent = (Swal.getTimerLeft() / 1000)
+                                                .toFixed(0)
+                                        }, 100)
+                                    },
+                                    willClose: () => {
+                                        clearInterval(timerInterval)
+                                    }
+                                }).then((result) => {
+                                    location.reload();
+                                })
+                                // location.reload();
+                        } else if (data == 'vacio') {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Algo salio mal!',
+                                text: 'La solicitud de hora fue rechazada, revisa los datos ingresados o reintenta más tarde.',
+                            })
+                            $('#consulta').modal('hide');
+                        } else {
+                            console.log(data);
+                        }
+                    }
+                });
             }
-        });
+        })
     })
 
     $("#formExamen").submit(function(e) {
         e.preventDefault();
         var datos = $(this).serialize();
-        $.ajax({
-            type: "POST",
-            url: "php/addDemo.php",
-            data: datos,
-            success: function(data) {
-                if (data == 'ok') {
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Solicitud Exitosa',
-                        text: 'Su reserva de hora ha sido solicitada satisfactoriamente. Una copia de esta solicitud fue enviada a tu correo electrónico.',
-                        footer: '<a href="mailto:soporte@buscamedica.cl">Si necesitas ayuda comunicate con Soporte</a>'
-                    })
-                    $('#formExamen')[0].reset();
-                    $('#examen').modal('hide');
-                } else if (data == 'vacio') {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Algo salio mal!',
-                        text: 'La solicitud de hora fue rechazada, revisa los datos ingresados o reintenta más tarde.',
-                        footer: '<a href="mailto:soporte@buscamedica.cl">Si necesitas ayuda comunicate con Soporte</a>'
-                    })
-                    $('#examen').modal('hide');
-                } else {
-                    console.log(data);
-                }
+        Swal.fire({
+            icon: 'question',
+            title: '¿Estás seguro?',
+            text: 'Estamos enviando una solicitud para reserva de hora médica',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si, estoy seguro',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+                $.ajax({
+                    type: "POST",
+                    url: "php/addExamen.php",
+                    data: datos,
+                    success: function(data) {
+                        if (data == 'ok') {
+                            $('#examen').modal('hide');
+                            let timerInterval
+                            Swal.fire({
+                                    icon: 'success',
+                                    title: 'Hemos enviado la solicitud',
+                                    html: 'Perfecto, una copia de esta solicitud será enviada a su correo electrónico. Estamos recargando la página en <b></b> segundos.',
+                                    timer: 10000,
+                                    timerProgressBar: true,
+                                    didOpen: () => {
+                                        Swal.showLoading()
+                                        timerInterval = setInterval(() => {
+                                            Swal.getContent().querySelector('b')
+                                                .textContent = (Swal.getTimerLeft() / 1000)
+                                                .toFixed(0)
+                                        }, 100)
+                                    },
+                                    willClose: () => {
+                                        clearInterval(timerInterval)
+                                    }
+                                }).then((result) => {
+                                    location.reload();
+                                })
+                                // location.reload();
+                        } else if (data == 'vacio') {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Algo salio mal!',
+                                text: 'La solicitud de hora fue rechazada, revisa los datos ingresados o reintenta más tarde.',
+                            })
+                            $('#examen').modal('hide');
+                        } else {
+                            console.log(data);
+                        }
+                    }
+                });
             }
-        });
+        })
     })
 
     $("#formVideo").submit(function(e) {
         e.preventDefault();
         var datos = $(this).serialize();
-        $.ajax({
-            type: "POST",
-            url: "php/addDemo.php",
-            data: datos,
-            success: function(data) {
-                if (data == 'ok') {
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Solicitud Exitosa',
-                        text: 'Su reserva de hora ha sido solicitada satisfactoriamente. Una copia de esta solicitud fue enviada a tu correo electrónico.',
-                        footer: '<a href="mailto:soporte@buscamedica.cl">Si necesitas ayuda comunicate con Soporte</a>'
-                    })
-                    $('#formVideo')[0].reset();
-                    $('#videoconsulta').modal('hide');
-                } else if (data == 'vacio') {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Algo salio mal!',
-                        text: 'La solicitud de hora fue rechazada, revisa los datos ingresados o reintenta más tarde.',
-                        footer: '<a href="mailto:soporte@buscamedica.cl">Si necesitas ayuda comunicate con Soporte</a>'
-                    })
-                    $('#videoconsulta').modal('hide');
-                } else {
-                    console.log(data);
-                }
+        Swal.fire({
+            icon: 'question',
+            title: '¿Estás seguro?',
+            text: 'Estamos enviando una solicitud para reserva de hora médica',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si, estoy seguro',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+                $.ajax({
+                    type: "POST",
+                    url: "php/addVideo.php",
+                    data: datos,
+                    success: function(data) {
+                        if (data == 'ok') {
+                            $('#video').modal('hide');
+                            let timerInterval
+                            Swal.fire({
+                                    icon: 'success',
+                                    title: 'Hemos enviado la solicitud',
+                                    html: 'Perfecto, una copia de esta solicitud será enviada a su correo electrónico. Estamos recargando la página en <b></b> segundos.',
+                                    timer: 10000,
+                                    timerProgressBar: true,
+                                    didOpen: () => {
+                                        Swal.showLoading()
+                                        timerInterval = setInterval(() => {
+                                            Swal.getContent().querySelector('b')
+                                                .textContent = (Swal.getTimerLeft() / 1000)
+                                                .toFixed(0)
+                                        }, 100)
+                                    },
+                                    willClose: () => {
+                                        clearInterval(timerInterval)
+                                    }
+                                }).then((result) => {
+                                    location.reload();
+                                })
+                                // location.reload();
+                        } else if (data == 'vacio') {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Algo salio mal!',
+                                text: 'La solicitud de hora fue rechazada, revisa los datos ingresados o reintenta más tarde.',
+                            })
+                            $('#video').modal('hide');
+                        } else {
+                            console.log(data);
+                        }
+                    }
+                });
             }
-        });
+        })
     })
 
     $("#formHigienizacion").submit(function(e) {
         e.preventDefault();
         var datos = $(this).serialize();
-        $.ajax({
-            type: "POST",
-            url: "php/addDemo.php",
-            data: datos,
-            success: function(data) {
-                if (data == 'ok') {
+        Swal.fire({
+            icon: 'question',
+            title: '¿Estás seguro?',
+            text: 'Estamos enviando una solicitud para reserva de hora médica',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si, estoy seguro',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+                $.ajax({
+                    type: "POST",
+                    url: "php/addHigienizacion.php",
+                    data: datos,
+                    success: function(data) {
+                        if (data == 'ok') {
+                            $('#higienizacion').modal('hide');
+                            let timerInterval
+                            Swal.fire({
+                                    icon: 'success',
+                                    title: 'Hemos enviado la solicitud',
+                                    html: 'Perfecto, una copia de esta solicitud será enviada a su correo electrónico. Estamos recargando la página en <b></b> segundos.',
+                                    timer: 10000,
+                                    timerProgressBar: true,
+                                    didOpen: () => {
+                                        Swal.showLoading()
+                                        timerInterval = setInterval(() => {
+                                            Swal.getContent().querySelector('b')
+                                                .textContent = (Swal.getTimerLeft() / 1000)
+                                                .toFixed(0)
+                                        }, 100)
+                                    },
+                                    willClose: () => {
+                                        clearInterval(timerInterval)
+                                    }
+                                }).then((result) => {
+                                    location.reload();
+                                })
+                                // location.reload();
+                        } else if (data == 'vacio') {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Algo salio mal!',
+                                text: 'La solicitud de hora fue rechazada, revisa los datos ingresados o reintenta más tarde.',
+                            })
+                            $('#higienizacion').modal('hide');
+                        } else {
+                            console.log(data);
+                        }
+                    }
+                });
+            }
+        })
+    })
+
+    /**
+     * Envio de formulario de contacto
+     */
+    $('#formContacto').submit(function(e) {
+
+            var form = $(this).serialize();
+            $.ajax({
+                type: "POST",
+                url: "php/addMail.php",
+                data: form,
+                success: function(data) {
                     Swal.fire({
                         icon: 'success',
-                        title: 'Solicitud Exitosa',
-                        text: 'Su reserva de hora ha sido solicitada satisfactoriamente. Una copia de esta solicitud fue enviada a tu correo electrónico.',
-                        footer: '<a href="mailto:soporte@buscamedica.cl">Si necesitas ayuda comunicate con Soporte</a>'
+                        title: 'Mensaje enviado',
+                        html: 'Su mensaje ha sido enviado satisfactoriamente, responderemos a la brevedad.',
                     })
-                    $('#formHigienizacion')[0].reset();
-                    $('#higienizacion').modal('hide');
-                } else if (data == 'vacio') {
+                },
+                error: function(data) {
                     Swal.fire({
                         icon: 'error',
                         title: 'Algo salio mal!',
-                        text: 'La solicitud de hora fue rechazada, revisa los datos ingresados o reintenta más tarde.',
-                        footer: '<a href="mailto:soporte@buscamedica.cl">Si necesitas ayuda comunicate con Soporte</a>'
+                        text: 'La solicitud fue rechazada, revisa los datos ingresados o reintenta más tarde.',
                     })
-                    $('#higienizacion').modal('hide');
-                } else {
-                    console.log(data);
                 }
+            });
+            e.preventDefault();
+        })
+        /**
+         * Envio de formulario de suscripción
+         */
+    $('#formSuscripcion').submit(function(e) {
+
+        var form = $(this).serialize();
+        $.ajax({
+            type: "POST",
+            url: "php/addDemo.php",
+            data: form,
+            success: function(data) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Genial',
+                    html: 'Te has suscrito satisfactoriamente.',
+                })
+            },
+            error: function(data) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Algo salio mal!',
+                    text: 'La solicitud fue rechazada, revisa los datos ingresados o reintenta más tarde.',
+                })
             }
         });
+        e.preventDefault();
     })
 });

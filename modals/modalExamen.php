@@ -11,7 +11,7 @@
             <div class="modal-body">
                 <form name="formExamen" id="formExamen" method="POST">
                     <div id="examen-step">
-                        <h3>Buscador de Hora</h3>
+                        <h3>Información para búsqueda</h3>
                         <section>
                             <input name="idTipoE" id="idTipoE" type="hidden" value="2">
                             <div class="form-row">
@@ -91,6 +91,7 @@
                                 <div class="col-md-12 form-group">
                                     <label for="rutUserE" class="label-reserva">R.U.T. <span class="text-danger ml-auto">*</span></label>
                                     <input name="rutUserE" id="rutUserE" class="form-control" placeholder="Ingrese R.U.T." required="required">
+                                    <span id="validateRut2"></span>
                                 </div>
                             </div>
 
@@ -123,10 +124,11 @@
                             </div>
                         </section>
                     </div>
+                    <p class="text-center mt-3"><small>Los campos con (<span class="text-danger ml-auto">*</span>) son obligatorios.</small></p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary mr-auto" data-dismiss="modal">Cerrar</button>
-                <button type="submit" class="btn btn-primary">Solicitar Hora</button>
+                <button type="submit" class="btn btn-primary" id="btnExamen">Solicitar Hora</button>
             </div>
         </div>
         </form>

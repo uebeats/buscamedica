@@ -122,7 +122,7 @@ require('php/conexion.php');
 
           <li><a href="#videos">Videos</a></li>
 
-          <li><a href="#">Foros</a></li>
+          <li><a href="https://foro.buscamedica.cl/" target="_blank" rel="noopener">Foros</a></li>
 
           <li><a href="#contacto">Contacto</a></li>
 
@@ -983,7 +983,7 @@ require('php/conexion.php');
 
 
 
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+            <form method="post" role="form" class="php-email-form" id="formContacto">
 
               <div class="form-row">
 
@@ -1021,15 +1021,6 @@ require('php/conexion.php');
 
               </div>
 
-              <div class="mb-3">
-
-                <div class="loading">Cargando...</div>
-
-                <div class="error-message"></div>
-
-                <div class="sent-message">Your message has been sent. Thank you!</div>
-
-              </div>
 
               <div class="text-center"><button type="submit">Enviar Mensaje</button></div>
 
@@ -1097,15 +1088,15 @@ require('php/conexion.php');
 
               <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
 
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Reserva tu Hora</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#reserva">Reserva tu Hora</a></li>
 
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Prestacion Médica</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#prestaciones">Prestacion Médica</a></li>
 
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Videos</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#videos">Videos</a></li>
 
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Foro</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="https://foro.buscamedica.cl/" target="_blank" rel="noopener">Foro</a></li>
 
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Contacto</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#contacto">Contacto</a></li>
 
             </ul>
 
@@ -1127,8 +1118,6 @@ require('php/conexion.php');
 
               <li><i class="bx bx-chevron-right"></i> <a href="#">Unete a Buscamedica</a></li>
 
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Lorem ipsum dolor sit.</a></li>
-
             </ul>
 
           </div>
@@ -1141,9 +1130,9 @@ require('php/conexion.php');
 
             <p>Se parte de la familia BuscaMédica y enterate de noticias e información relevante</p>
 
-            <form action="" method="post">
+            <form method="post" id="formSuscripcion">
 
-              <input type="email" name="email"><input type="submit" value="Subscribirme">
+              <input type="email" name="mailsuscriptor"><input type="submit" value="Subscribirme">
 
             </form>
 
@@ -1237,8 +1226,6 @@ require('php/conexion.php');
 
   <script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>
 
-  <script src="assets/vendor/jquery.rut/jquery.rut.js"></script>
-
   <script src="assets/vendor/jquery-step/jquery.steps.min.js"></script>
 
   <script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>
@@ -1246,8 +1233,9 @@ require('php/conexion.php');
   <script src="assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
   <script src="assets/vendor/bootstrap-datepicker/locales/bootstrap-datepicker.es.min.js"></script>
 
-
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+  <script src="assets/vendor/jquery.rut/jquery.rut.js"></script>
 
   <!-- Template Main JS File -->
 

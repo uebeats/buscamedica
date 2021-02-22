@@ -24,9 +24,9 @@ GROUP BY examenes.nombreexamen, examenes.idexamen"
 
 $stmt_examen->execute();
 $examenes = $stmt_examen->fetchAll();
-
-foreach ($examenes as $examen) { ?>
-    <option></option>
+?>
+<option value="0">Selecciona una opción </option>
+<?php foreach ($examenes as $examen) { ?>
     <option value="<?php echo $examen['idexamen']; ?>">
         <?php echo $examen['nombreexamen']; ?>
     </option>
